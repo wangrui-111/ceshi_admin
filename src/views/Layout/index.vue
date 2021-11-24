@@ -1,9 +1,12 @@
 <template>
-  <div class="app-wrapper">
+  <div
+    class="app-wrapper"
+    :class="store.getters.sideBarOpen ? '' : 'hideSidebar'"
+  >
     <!-- 侧边栏 -->
     <side-bar
       class="sidebar-container"
-      :style="{ backgroundColor: variables.subMenuBg }"
+      :style="{ background: variables.menuBg }"
     />
     <!-- 右边 -->
     <div class="main-container">
@@ -20,6 +23,8 @@ import NavBar from './components/Navbar/index.vue'
 import AppMain from './components/Appmain/index.vue'
 
 import variables from '@/styles/variables.scss'
+import { useStore } from 'vuex'
+const store = useStore()
 </script>
 <style lang="scss" scoped>
 @import '~@/styles/common.scss';
@@ -29,18 +34,17 @@ import variables from '@/styles/variables.scss'
   position: relative;
   height: 100%;
   width: 100%;
-  .sidebar-container {
-    width: $sideBarWidth;
-    height: 100vh;
-  }
   .main-container {
     .fixed-header {
-      position: fixed;
+      // position: fixed;
       top: 0px;
       right: 0px;
       z-index: 10;
-      width: cale(100% - #{$sideBarWidth});
+      width: calc(100% - #{sideBarWidth});
     }
+  }
+  .hideSidebar .fixed-header {
+    width: calc(100% - #{sideBarhideWidth});
   }
 }
 </style>

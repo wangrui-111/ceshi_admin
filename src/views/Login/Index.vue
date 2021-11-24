@@ -95,10 +95,11 @@ const handleLogin = () => {
       return
     }
     // 验证登录通过执行登录逻辑 调用定义好的
-    store.dispatch('user/login', loginForm.value) // 异步请求 OK no
-    router.push({
-      name: 'Index'
-    })
+    store.dispatch('user/login', loginForm.value).then((res) => {
+      router.push({
+        name: 'Index'
+      })
+    }) // 异步请求 OK no
   })
 }
 </script>
@@ -172,7 +173,7 @@ $cursor: #fff;
       }
     }
     .svg-openclose {
-      padding: 6px 5px 5px 5px;
+      // padding: 6px 5px 5px 15px;
       overflow: hidden;
     }
     .svg {
