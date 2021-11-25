@@ -7,7 +7,8 @@
       ref="loginRef"
     >
       <div class="title-container">
-        <h1 class="Litle">用户登录</h1>
+        <h1 class="Litle">{{ $t('msg.login.title') }}</h1>
+        <select-lang class="select-lang"></select-lang>
       </div>
 
       <el-form-item prop="username">
@@ -46,17 +47,21 @@
         type="primary"
         style="width: 100%; margin-top: 30px"
         @click="handleLogin"
-        >登录</el-button
+        >{{ $t('msg.login.loginBtn') }}</el-button
       >
+      <!-- 账号tips -->
+      <div class="tips" v-html="$t('msg.login.desc')"></div>
     </el-form>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { passwordValidate } from './rule'
+import { ref, watch } from 'vue'
+import { passwordValidate, usernameValidate } from './rule'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import SelectLang from '@/components/SelectLang/index.vue'
+
 const loginForm = ref({
   username: 'super-admin',
   password: '123456'
@@ -67,7 +72,8 @@ const loginRules = {
     {
       required: true,
       trigger: 'blur',
-      message: '账号必须填写'
+      // message: i18n.t('msg.login.usernameRule')  // 不具备响应式
+      validator: usernameValidate()
     }
   ],
   password: [
@@ -102,6 +108,15 @@ const handleLogin = () => {
     }) // 异步请求 OK no
   })
 }
+// 监听getters.language的变化
+watch(
+  () => store.getters.language,
+  (newValue, oldValue) => {
+    //  中英文切换
+    loginRef.value.validateField('username')
+    loginRef.value.validateField('password')
+  }
+)
 </script>
 <style scoped lang="scss">
 $bg: #2d3a4b;
@@ -159,6 +174,17 @@ $cursor: #fff;
         text-align: center;
         font-weight: bold;
       }
+      :deep(.select-lang) {
+        position: absolute;
+        top: 4px;
+        right: 0px;
+        width: 30px;
+        height: 30px;
+        background-color: white;
+        font-size: 24px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
     }
     .svg-container {
       padding: 6px 5px 5px 15px;
@@ -181,6 +207,12 @@ $cursor: #fff;
       height: 20px;
       margin-top: 1px;
       fill: #889aa4;
+    }
+    .tips {
+      font-size: 14px;
+      line-height: 28px;
+      color: #fff;
+      margin-bottom: 10px;
     }
   }
 }

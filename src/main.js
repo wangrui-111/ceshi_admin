@@ -14,12 +14,15 @@ import initSvgicon from './icons/index.js'
 // 用户鉴权
 import './permission.js'
 
+// 导入i18n
+import i18n from '@/i18n/index.js'
+
 const app = createApp(App)
 installElementPlus(app)
 // svg全局注册组件
 initSvgicon(app)
 
-app.use(store).use(router)
+app.use(store).use(router).use(i18n)
 app.mount('#app')
 /*eslint-disable*/
 // 入口main.js（导入模块，js模块） -->webpack 处口/js/app.js文件
@@ -40,4 +43,15 @@ app.mount('#app')
 
   如何配置webpack
   1.项目根目录创建
+*/
+/*
+  中英文切换（国际化）
+  1.需要一个变量 locale 控制语言环境
+  2.所有的语言中的数据源事先要准备号
+  3.定义一个方法获取对应的语言包中的数据
+
+  借助i18n插件完成 国际化
+  1.下载i18n
+    npm install vue-i18n@next
+  2.
 */
