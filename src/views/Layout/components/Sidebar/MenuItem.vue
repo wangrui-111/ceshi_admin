@@ -27,5 +27,8 @@ console.log(props.icon, '999')
 .sideClass {
   margin-right: 10px;
   margin-left: 3px;
+  // border: 1px solid red;
+  vertical-align: middle;
+  // padding: 20px 20px 20px 20px;
 }
 </style>

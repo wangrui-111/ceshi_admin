@@ -15,7 +15,7 @@ const PrivateRoutes = [
         path: '/user/manage',
         component: () => import('@/views/user-manage/index'),
         meta: {
-          title: 'userMange',
+          title: 'userInfo',
           icon: 'personnel-manage'
         }
       },
