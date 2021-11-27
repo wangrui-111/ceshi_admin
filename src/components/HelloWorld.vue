@@ -47,7 +47,6 @@ import { Avatar } from '@element-plus/icons'
 import Demo from './Demo.vue'
 import Adeir from './Adeir.vue'
 import svg from '@/icons/user.svg'
-console.log(svg)
 </script>
 <style scoped lang="scss">
 $bg: #2d3a4b;

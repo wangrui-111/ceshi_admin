@@ -9,7 +9,8 @@
 <script setup>
 import { defineProps } from 'vue'
 import { getTitle } from '@/utils/i18n.js'
-const props = defineProps({
+// const props = defineProps({
+defineProps({
   title: {
     type: String,
     required: true
@@ -19,8 +20,7 @@ const props = defineProps({
     required: true
   }
 })
-console.log(props)
-console.log(props.icon, '999')
+// console.log(props)
 </script>
 
 <style lang="scss" scoped>

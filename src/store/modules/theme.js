@@ -3,7 +3,7 @@ import { MYCOLOR } from '@/common/common.js'
 export default {
   namespaced: true,
   state: {
-    myColor: getItem(MYCOLOR) || 'cccccc'
+    myColor: getItem(MYCOLOR) || ''
   },
   mutations: {
     setMyColor(state, color) {

@@ -23,10 +23,10 @@ import { useStore } from 'vuex'
 const store = useStore()
 const router = useRouter()
 // 获取路由
-console.log(router.getRoutes())
+// console.log(router.getRoutes())
 // 去重
-console.log(filterRouter(router.getRoutes()))
-console.log(generateMenus(filterRouter(router.getRoutes())))
+// console.log(filterRouter(router.getRoutes()))
+// console.log(generateMenus(filterRouter(router.getRoutes())))
 const routes = computed(() => {
   const filterRoutes = filterRouter(router.getRoutes())
   return generateMenus(filterRoutes)
@@ -37,7 +37,7 @@ const activePath = computed(() => {
   const { path } = route
   return path
 })
-console.log(routes.value)
+// console.log(routes.value)
 </script>
 <style lang="scss" scoped>
 :deep(.el-sub-menu__title) {

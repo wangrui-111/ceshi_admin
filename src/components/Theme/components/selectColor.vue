@@ -47,7 +47,6 @@ const color = ref(store.getters.theme_color)
 
 // 切换按钮
 const confirm = async () => {
-  // console.log(color.value)
   // 1.保存主题色
   store.commit('theme/setMyColor', color.value)
   // 2.替换element和本地的样式 让主题色生效
@@ -59,7 +58,6 @@ const confirm = async () => {
   */
   //  2-1 生成最终要替换的颜色
   const newStyle = await generateNewStyle(color.value)
-  console.log(newStyle)
   // 2-2
   writeStyleToHearTag(newStyle)
   // 3.关闭dialog

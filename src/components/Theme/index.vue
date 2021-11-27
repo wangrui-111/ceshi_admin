@@ -21,7 +21,6 @@
     </template>
   </el-dropdown>
   <!-- 弹出的模态框 -->
-  <p>{{ showDialogVariable.toString() }}</p>
   <select-color
     :showDialogVariable="showDialogVariable"
     @closeDialog="hideSlectColor"
@@ -33,7 +32,6 @@ import SelectColor from './components/selectColor.vue'
 import { ref } from 'vue'
 const showDialogVariable = ref(false)
 const showSelectColor = () => {
-  console.log('xxx')
   showDialogVariable.value = true
 }
 const hideSlectColor = () => {

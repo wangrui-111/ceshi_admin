@@ -20,13 +20,14 @@
 <script setup>
 import { defineProps } from 'vue'
 import MenuItem from './MenuItem.vue'
-const props = defineProps({
+// const props = defineProps({
+defineProps({
   route: {
     type: Object,
     required: true
   }
 })
-console.log(props.route, '000000')
+// console.log(props.route)
 </script>
 
 <style lang="sass" scoped></style>
