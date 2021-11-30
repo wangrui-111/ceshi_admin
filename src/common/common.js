@@ -7,6 +7,7 @@ export const TIME_OUT = 2 * 60 * 60 * 1000
 export const LANGUAGE = 'language'
 // 主题色
 export const MYCOLOR = 'theme_color'
+export const TAG_VIEWS = 'tag_views'
 
 export const predefineColors = [
   '#ff4500',

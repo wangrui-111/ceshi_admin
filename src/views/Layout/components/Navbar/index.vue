@@ -40,6 +40,7 @@ import SelectLang from '@/components/SelectLang/index.vue'
 import Theme from '@/components/Theme/index.vue'
 import ScreenFull from '@/components/Screenfull/index.vue'
 import Search from '@/components/Search/index.vue'
+
 const store = useStore()
 // 主动退出
 const logout = () => {
