@@ -18,6 +18,9 @@ import './permission.js'
 
 // 导入i18n
 import i18n from '@/i18n/index.js'
+// 注册全局属性
+import initFilters from '@/filters/index.js'
+import initDirectives from '@/directives/index.js'
 
 const app = createApp(App)
 
@@ -25,7 +28,8 @@ app.use(ElementPlus)
 // installElementPlus(app)
 // svg全局注册组件
 initSvgicon(app)
-
+initFilters(app)
+initDirectives(app)
 app.use(store).use(router).use(i18n)
 app.mount('#app')
 /*eslint-disable*/

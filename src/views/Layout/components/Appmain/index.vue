@@ -3,7 +3,9 @@
     <!-- 二级路由 -->
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
-        <component :is="Component" />
+        <keep-alive>
+          <component :is="Component" />
+        </keep-alive>
       </transition>
     </router-view>
   </div>
@@ -66,7 +68,7 @@ watchLang(() => {
   width: 100%;
   position: relative;
   overflow: hidden;
-  // padding: 61px 20px 20px 20px;
+  padding: 100px 20px 20px 20px;
   box-sizing: border-box;
 }
 </style>

@@ -8,7 +8,14 @@ export const LANGUAGE = 'language'
 // 主题色
 export const MYCOLOR = 'theme_color'
 export const TAG_VIEWS = 'tag_views'
-
+// excel 批量导入 字段对应关系
+export const USER_RELATION = {
+  姓名: 'username',
+  联系方式: 'mobile',
+  角色: 'role',
+  开通时间: 'openTime'
+  // 头像: 'avatar'
+}
 export const predefineColors = [
   '#ff4500',
   '#ff8c00',

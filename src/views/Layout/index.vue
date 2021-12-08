@@ -37,20 +37,17 @@ const store = useStore()
   position: relative;
   height: 100%;
   width: 100%;
-  .main-container {
-    .fixed-header {
-      // position: fixed;
-      top: 0px;
-      right: 0px;
-      z-index: 10;
-      width: calc(100% - #{sideBarWidth});
-    }
-  }
-  .hideSidebar .fixed-header {
-    width: calc(100% - #{sideBarhideWidth});
-  }
 }
-.appmain {
-  margin-top: 34px;
+.fixed-header {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  z-index: 10;
+  width: calc(100% - #{$sideBarWidth}); // 用来动态计算宽度的
+  transition: 0.28s;
+}
+.hideSidebar .fixed-header {
+  width: calc(100% - #{$sideBarhideWidth});
+  transition: 0.28s;
 }
 </style>

@@ -12,10 +12,10 @@ const PrivateRoutes = [
     },
     children: [
       {
-        path: '/user/manage',
+        path: '/user/userManage',
         component: () => import('@/views/user-manage/index'),
         meta: {
-          title: 'userInfo',
+          title: 'userManage',
           icon: 'personnel-manage'
         }
       },
@@ -39,6 +39,7 @@ const PrivateRoutes = [
         path: '/user/info/:id',
         name: 'userInfo',
         component: () => import('@/views/user-info/index'),
+        props: true,
         meta: {
           title: 'userInfo'
         }

@@ -14,12 +14,12 @@
     >
       {{ route.title }}
       <!-- 渲染删除icon -->
-      <el-icon
+      <svg-icon
         iconName="close"
         class="el-icon-close"
         v-if="!isActive(route)"
         @click.prevent.stop="closeCurrentTag(index)"
-      ></el-icon>
+      ></svg-icon>
       <!-- <i class="el-icon-close" v-if="!isActive(route)"></i> -->
     </router-link>
     <!-- 操作菜单 -->
@@ -131,9 +131,10 @@ watch(isShowContextMenu, (newValue, oldValue) => {
       width: 16px;
       height: 16px;
       line-height: 10px;
-      vertical-align: middle;
+      vertical-align: -3px;
+      margin-left: 4px;
       border-radius: 50%;
-      text-align: center;
+      text-align: right;
       transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
       transform-origin: 100% 50%;
       &:before {
