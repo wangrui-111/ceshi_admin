@@ -1,9 +1,11 @@
 <template>
-  <!-- el-icon -->
-  <i :class="icon" v-if="icon.includes('el-icon')"></i>
-  <!-- svg 组件 -->
-  <svg-icon :iconName="icon" className="sideClass" v-else />
-  <span>{{ getTitle(title) }}</span>
+  <div>
+    <!-- el-icon -->
+    <i :class="icon" v-if="icon.includes('el-icon')"></i>
+    <!-- svg 组件 -->
+    <svg-icon :iconName="icon" className="sideClass" v-else />
+    <span>{{ getTitle(title) }}</span>
+  </div>
 </template>
 
 <script setup>

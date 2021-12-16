@@ -1,6 +1,9 @@
 <template>
   <!-- 有二级菜单 -->
-  <el-sub-menu v-if="route.children.length > 0" :index="route.path">
+  <el-sub-menu
+    v-if="route.children && route.children.length > 0"
+    :index="route.path"
+  >
     <template #title>
       <menu-item :title="route.meta.title" :icon="route.meta.icon" />
     </template>

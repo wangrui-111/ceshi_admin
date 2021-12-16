@@ -1,10 +1,15 @@
 <template>
   <div>
-    <el-card>
-      <el-button type="primary" @click="toggle">全部展开</el-button>
+    <el-card class="toggle">
+      <el-button type="primary" @click="toggle">{{
+        isShowChildren
+          ? $t('msg.role.toggleTittle2')
+          : $t('msg.role.toggleTittle1')
+      }}</el-button>
     </el-card>
     <el-card>
       <el-table
+        ref="table"
         :data="permissionData"
         style="width: 100%; margin-bottom: 20px"
         border
@@ -59,22 +64,37 @@ const initPermission = async () => {
   permissionData.value = data
 }
 initPermission()
+// 全部展开和收起二级菜单
+const isShowChildren = ref(false)
+const table = ref(null)
+const toggle = () => {
+  isShowChildren.value = !isShowChildren.value
+  // 展开二级tr
+  permissionData.value.forEach((row) => {
+    table.value.toggleRowExpansion(row, isShowChildren.value)
+  })
+}
 // 修改二级菜单的背景
 const childreBgColor = ref(store.getters.cssVar['light-6'])
 // 修改hove 状态的背景
 const hoverBgColor = ref(store.getters.cssVar['light-3'])
 
-const isShowChildren = ref(false)
-const toggle = () => {
-  isShowChildren.value = !isShowChildren.value
-}
 watch(
   () => {
     return store.getters.cssVar
   },
   () => {
-    childrenBgColor.value = store.getters.cssVar['light-6']
+    childreBgColor.value = store.getters.cssVar['light-6']
     hoverBgColor.value = store.getters.cssVar['light-3']
+  }
+)
+// 如果语言切换了 重新请求接口
+watch(
+  () => {
+    return store.getters.language
+  },
+  () => {
+    initPermission()
   }
 )
 </script>
@@ -84,7 +104,11 @@ watch(
   background-color: v-bind(childreBgColor);
 }
 :deep(.el-table__body tr:hover > td) {
-  background-color: v-bind(hoverBgColor);
+  background-color: v-bind(hoverBgColor) !important;
   color: #fff;
+}
+.toggle {
+  text-align: right;
+  margin-bottom: 20px;
 }
 </style>

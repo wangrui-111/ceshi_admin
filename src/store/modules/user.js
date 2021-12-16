@@ -2,12 +2,13 @@ import { login, getUserInfo } from '@/api/user.js'
 import md5 from 'md5'
 import * as utils from '@/utils/storage.js'
 
-import { TOKEN, USER_INFO } from '../../common/common.js'
-import router from '../../router/index.js'
+import { TOKEN } from '../../common/common.js'
+import router, { clearPrivateRoutes } from '../../router/index.js'
 import { setTimeStamp } from '@/utils/auth.js'
 
 const state = {
   token: utils.getItem(TOKEN) || '',
+  // userInfo: utils.getItem(USER_INFO) || {}
   userInfo: {}
 }
 const getters = {}
@@ -20,7 +21,7 @@ const mutations = {
     // 保存vuex
     state.userInfo = userInfo
     // 保存到本地存储中
-    utils.setItem(USER_INFO, userInfo)
+    // utils.setItem(USER_INFO, userInfo)
   }
 }
 const actions = {
@@ -44,22 +45,33 @@ const actions = {
         })
     })
   },
-  logout({ commit }) {
+  logout(context) {
     // 清理用户数据
-    commit('setToken', '')
+    context.commit('setToken', '')
+
+    context.dispatch('roleAndPermission/clearRoleAndPermission', null, {
+      root: true
+    })
+    // 清空当前该用户的动态路由
+    clearPrivateRoutes()
+
+    context.commit('setUserInfo', {})
     // 跳转到登录页面
     router.push('/login')
   },
-  getUserInfo({ commit }) {
+  async getUserInfo({ commit }) {
     // 发送axios
-    getUserInfo()
-      .then((res) => {
-        commit('setUserInfo', res)
-        // console.log(res)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    const res = await getUserInfo()
+    commit('setUserInfo', res)
+    return res
+    // getUserInfo()
+    //   .then((res) => {
+    //     commit('setUserInfo', res)
+    //     // console.log(res)
+    //   })
+    //   .catch((err) => {
+    //     console.log(err)
+    //   })
   }
 }
 export default {
