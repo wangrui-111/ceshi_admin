@@ -34,6 +34,7 @@ router.beforeEach(async (to, from, next) => {
           router.addRoute(activeRoute)
         })
         // 4、执行跳转 到首页
+        router.push(to.path)
       }
       // 首次登录 跳转到首页
       next()

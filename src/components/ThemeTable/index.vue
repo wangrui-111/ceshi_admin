@@ -1,8 +1,6 @@
 <template>
   <div>
-    <el-card>
-      <slot :headerStyleObj="headerStyleObj" />
-    </el-card>
+    <slot :headerStyleObj="headerStyleObj" />
   </div>
 </template>
 
